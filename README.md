@@ -1,1 +1,724 @@
 # ngemcarlos26-rgb.github.io
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crested Spot | Chinese Crested Dogs — New York</title>
+<meta name="description" content="Crested Spot is a small, health-tested Chinese Crested breeding program based in New York. View available puppies and apply to adopt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --porcelain:#F7F2EC;
+    --ink:#2B2521;
+    --hide:#C08770;
+    --umber:#6E4A3A;
+    --gold:#B08D4F;
+    --line: rgba(43,37,33,0.12);
+    --card:#FFFDFA;
+    --radius: 3px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--porcelain);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+  .skip-link{position:absolute; left:-999px; top:0; background:var(--ink); color:var(--porcelain); padding:10px 16px; z-index:100;}
+  .skip-link:focus{left:16px; top:16px;}
+  :focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,242,236,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 0;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-size:1.35rem;
+    font-weight:600;
+    display:flex; align-items:center; gap:10px;
+    text-decoration:none;
+  }
+  .logo-mark{width:30px; height:30px; flex-shrink:0;}
+  .nav-links{display:flex; gap:32px; list-style:none; margin:0; padding:0;}
+  .nav-links a{
+    text-decoration:none; font-size:0.92rem; font-weight:500;
+    letter-spacing:0.02em;
+    position:relative; padding-bottom:3px;
+  }
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:0; height:1px; width:0;
+    background:var(--hide); transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--ink); color:var(--porcelain); padding:10px 20px;
+    text-decoration:none; font-size:0.88rem; font-weight:600; border-radius:var(--radius);
+    white-space:nowrap;
+  }
+  .menu-btn{display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--ink);}
+  @media (max-width: 820px){
+    .nav-links{
+      position:fixed; inset:64px 0 0 0; background:var(--porcelain);
+      flex-direction:column; padding:32px 24px; gap:22px;
+      transform:translateX(100%); transition:transform .3s ease;
+    }
+    .nav-links.open{transform:translateX(0);}
+    .menu-btn{display:block;}
+    .nav-cta{display:none;}
+  }
+  .hero{
+    padding:64px 0 40px;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
+  }
+  .eyebrow{
+    text-transform:uppercase; letter-spacing:0.14em; font-size:0.76rem;
+    font-weight:600; color:var(--umber); margin-bottom:18px; display:block;
+  }
+  .hero h1{font-size:clamp(2.4rem, 5vw, 3.6rem); line-height:1.05;}
+  .hero h1 em{font-style:italic; color:var(--hide);}
+  .hero p.lede{font-size:1.08rem; max-width:46ch; margin:22px 0 30px; color:#4a423c;}
+  .btn-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    padding:13px 24px; border-radius:var(--radius); text-decoration:none;
+    font-weight:600; font-size:0.92rem; display:inline-block; transition:transform .15s ease, background .2s ease;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--hide); color:#fff;}
+  .btn-primary:hover{background:var(--umber);}
+  .btn-secondary{border-color:var(--ink); color:var(--ink);}
+  .btn-secondary:hover{background:var(--ink); color:var(--porcelain);}
+  .hero-visual{
+    position:relative; aspect-ratio:1/1; border-radius:var(--radius);
+    background:linear-gradient(160deg, #E9DDCF, #D8C3AE);
+    overflow:hidden;
+  }
+  #spotCanvas{width:100%; height:100%; display:block;}
+  .hero-visual-caption{
+    position:absolute; bottom:14px; left:14px; right:14px;
+    font-size:0.72rem; color:var(--porcelain); background:rgba(43,37,33,0.55);
+    padding:8px 10px; border-radius:var(--radius); backdrop-filter:blur(3px);
+  }
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr; padding-top:36px;}
+  }
+  .trust{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:22px 0;
+  }
+  .trust-row{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:18px;
+    font-size:0.84rem; font-weight:500; color:var(--umber); letter-spacing:0.02em;
+  }
+  .trust-row span{display:flex; align-items:center; gap:8px;}
+  .trust-row span::before{content:'●'; color:var(--hide); font-size:0.55rem;}
+  section{padding:84px 0;}
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(1.8rem, 3vw, 2.4rem);}
+  .section-head p{color:#4a423c; margin-top:14px; max-width:56ch;}
+  .facts-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+  }
+  .fact{background:var(--card); padding:28px 22px;}
+  .fact .num{font-family:'Fraunces', serif; font-size:1.9rem; color:var(--hide); display:block; margin-bottom:6px;}
+  .fact .label{font-size:0.82rem; color:#5b514a;}
+  @media(max-width:760px){.facts-grid{grid-template-columns:repeat(2,1fr);}}
+  .puppy-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:26px;}
+  .puppy-card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden; display:flex; flex-direction:column;
+  }
+  .puppy-photo{
+    aspect-ratio:4/3; background:linear-gradient(135deg,#E4D5C4,#C8AF98);
+    position:relative; display:flex; align-items:center; justify-content:center;
+  }
+  .puppy-photo svg{width:56%; opacity:0.85;}
+  .status-tag{
+    position:absolute; top:12px; left:12px; font-size:0.7rem; font-weight:600;
+    padding:5px 10px; border-radius:20px; letter-spacing:0.03em; text-transform:uppercase;
+  }
+  .status-available{background:#EAF3EA; color:#2E6B36;}
+  .status-reserved{background:#F4E9DC; color:var(--umber);}
+  .puppy-body{padding:20px 20px 22px; display:flex; flex-direction:column; gap:10px; flex:1;}
+  .puppy-name{font-family:'Fraunces', serif; font-size:1.25rem;}
+  .puppy-meta{font-size:0.82rem; color:#5b514a; display:flex; gap:14px; flex-wrap:wrap;}
+  .puppy-desc{font-size:0.9rem; color:#4a423c; flex:1;}
+  .puppy-foot{display:flex; justify-content:space-between; align-items:center; margin-top:6px;}
+  .price{font-weight:600; font-family:'Fraunces', serif; font-size:1.1rem;}
+  .link-arrow{font-size:0.85rem; font-weight:600; text-decoration:none; color:var(--umber); border-bottom:1px solid var(--hide);}
+  @media(max-width:900px){.puppy-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:600px){.puppy-grid{grid-template-columns:1fr;}}
+  .process{display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative;}
+  .process::before{
+    content:''; position:absolute; top:19px; left:6%; right:6%; height:1px; background:var(--line);
+  }
+  .step{position:relative; padding:0 18px;}
+  .step-dot{
+    width:38px; height:38px; border-radius:50%; background:var(--porcelain); border:1px solid var(--hide);
+    display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-size:0.95rem; color:var(--hide);
+    margin-bottom:18px; position:relative; z-index:1;
+  }
+  .step h3{font-size:1.02rem; margin-bottom:8px;}
+  .step p{font-size:0.87rem; color:#5b514a;}
+  @media(max-width:800px){
+    .process{grid-template-columns:1fr; gap:28px;}
+    .process::before{display:none;}
+  }
+  .testimonial-wrap{position:relative; background:var(--ink); color:var(--porcelain); border-radius:var(--radius); padding:52px;}
+  .testimonial-track{display:flex; overflow:hidden;}
+  .t-slide{min-width:100%; transition:opacity .4s ease;}
+  .t-quote{font-family:'Fraunces', serif; font-size:clamp(1.2rem,2.2vw,1.55rem); font-style:italic; line-height:1.5; max-width:64ch;}
+  .t-author{margin-top:22px; font-size:0.85rem; color:#D8C3AE; letter-spacing:0.02em;}
+  .t-controls{display:flex; gap:10px; margin-top:32px;}
+  .t-dot{width:8px; height:8px; border-radius:50%; background:rgba(247,242,236,0.3); border:none; cursor:pointer; padding:0;}
+  .t-dot.active{background:var(--hide);}
+  @media(max-width:700px){.testimonial-wrap{padding:32px 24px;}}
+  .apply-shell{display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px;}
+  .apply-info h2{margin-bottom:16px;}
+  .apply-info p{color:#4a423c; margin-bottom:26px;}
+  .apply-info ul{padding-left:0; list-style:none; display:flex; flex-direction:column; gap:14px;}
+  .apply-info li{display:flex; gap:12px; font-size:0.92rem; align-items:flex-start;}
+  .apply-info li::before{content:'✓'; color:var(--hide); font-weight:700; flex-shrink:0;}
+  form{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:32px;}
+  .field{margin-bottom:20px;}
+  .field label{display:block; font-size:0.82rem; font-weight:600; margin-bottom:7px; letter-spacing:0.01em;}
+  .field input, .field select, .field textarea{
+    width:100%; padding:12px 14px; border:1px solid var(--line); border-radius:var(--radius);
+    font-family:'Work Sans', sans-serif; font-size:0.94rem; background:#fff; color:var(--ink);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{border-color:var(--hide);}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  .field .err{font-size:0.78rem; color:#B0413E; margin-top:6px; display:none;}
+  .field.invalid input, .field.invalid select, .field.invalid textarea{border-color:#B0413E;}
+  .field.invalid .err{display:block;}
+  .submit-btn{
+    width:100%; background:var(--ink); color:var(--porcelain); border:none; padding:14px;
+    border-radius:var(--radius); font-weight:600; font-size:0.96rem; cursor:pointer; transition:background .2s ease;
+  }
+  .submit-btn:hover{background:var(--umber);}
+  .form-note{font-size:0.78rem; color:#5b514a; margin-top:14px; text-align:center;}
+  .success-msg{
+    display:none; background:#EAF3EA; color:#2E6B36; padding:14px 16px; border-radius:var(--radius);
+    font-size:0.88rem; margin-bottom:18px;
+  }
+  @media(max-width:840px){.apply-shell{grid-template-columns:1fr;} .field-row{grid-template-columns:1fr;}}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%; text-align:left; background:none; border:none; padding:20px 0;
+    display:flex; justify-content:space-between; align-items:center; cursor:pointer;
+    font-family:'Fraunces', serif; font-size:1.05rem; color:var(--ink);
+  }
+  .faq-q .plus{font-family:'Work Sans',sans-serif; font-size:1.3rem; color:var(--hide); transition:transform .25s ease;}
+  .faq-item.open .plus{transform:rotate(45deg);}
+  .faq-a{max-height:0; overflow:hidden; transition:max-height .3s ease;}
+  .faq-a p{padding:0 0 20px; color:#4a423c; font-size:0.92rem; max-width:62ch;}
+  footer{background:var(--ink); color:var(--porcelain); padding:56px 0 28px;}
+  .foot-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; margin-bottom:40px;}
+  footer h4{font-family:'Fraunces', serif; font-size:1rem; margin-bottom:14px; color:var(--porcelain);}
+  footer p, footer li{color:#C9BFB4; font-size:0.88rem;}
+  footer ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;}
+  footer a{text-decoration:none; color:#C9BFB4;}
+  footer a:hover{color:var(--hide);}
+  .foot-bottom{border-top:1px solid rgba(247,242,236,0.14); padding-top:22px; font-size:0.78rem; color:#9C9186; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+  @media(max-width:760px){.foot-grid{grid-template-columns:1fr;}}
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important; scroll-behavior:auto !important;}
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="Crested Spot home">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="20" cy="20" r="19" stroke="#C08770" stroke-width="1.4"/>
+        <circle cx="14" cy="15" r="2.6" fill="#C08770"/>
+        <circle cx="25" cy="12" r="1.7" fill="#B08D4F"/>
+        <circle cx="27" cy="24" r="2.2" fill="#6E4A3A"/>
+        <circle cx="16" cy="27" r="1.4" fill="#B08D4F"/>
+      </svg>
+      Crested&nbsp;Spot
+    </a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#breed">The Breed</a></li>
+        <li><a href="#puppies">Available Puppies</a></li>
+        <li><a href="#process">Our Process</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#apply">Apply</a></li>
+      </ul>
+    </nav>
+    <a href="#apply" class="nav-cta">Start Application</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="wrap">
+    <section class="hero" id="top" style="padding-top:56px;">
+      <div>
+        <span class="eyebrow">Hairless & Powderpuff Chinese Cresteds · Est. New York</span>
+        <h1>Every dog carries a pattern <em>found nowhere else.</em></h1>
+        <p class="lede">Crested Spot is a small home-based program raising health-tested Chinese Crested puppies in New York. Every litter is raised underfoot, vet-checked, and matched to families through a straightforward application — no waitlist games, no pressure.</p>
+        <div class="btn-row">
+          <a href="#puppies" class="btn btn-primary">View Available Puppies</a>
+          <a href="#breed" class="btn btn-secondary">Learn About the Breed</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <canvas id="spotCanvas" aria-hidden="true"></canvas>
+        <div class="hero-visual-caption">Every Chinese Crested's skin pattern is as unique as a fingerprint — ours redraws itself, tap to reshuffle.</div>
+      </div>
+    </section>
+  </div>
+
+  <div class="trust">
+    <div class="wrap trust-row">
+      <span>Health-tested breeding pairs</span>
+      <span>Raised in-home, New York State</span>
+      <span>AKC-registrable litters</span>
+      <span>Lifetime breeder support</span>
+    </div>
+  </div>
+
+  <section id="breed">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">The Breed</span>
+        <h2>Two coats, one dog.</h2>
+        <p>Chinese Cresteds come in two varieties from the same litter: Hairless, with soft skin and flowing furnishings on the head, feet, and tail, and Powderpuff, with a full double coat. Both are the same breed underneath — alert, affectionate, and sized for apartment life.</p>
+      </div>
+      <div class="facts-grid">
+        <div class="fact"><span class="num">8–12″</span><span class="label">Adult height at the shoulder</span></div>
+        <div class="fact"><span class="num">8–12 lb</span><span class="label">Typical adult weight</span></div>
+        <div class="fact"><span class="num">13–18</span><span class="label">Years, average lifespan</span></div>
+        <div class="fact"><span class="num">Low</span><span class="label">Shedding — both coat types</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="puppies" style="background:var(--card); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Available Now</span>
+        <h2>Current & upcoming litters</h2>
+        <p>Placement deposits hold a puppy once applications are reviewed and a phone or video call is completed. Every puppy goes home with a vet exam, first vaccinations, and a written health guarantee.</p>
+      </div>
+      <div class="puppy-grid">
+
+        <article class="puppy-card">
+          <div class="puppy-photo">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="46" rx="30" ry="20" fill="#8C6A54"/><circle cx="50" cy="26" r="16" fill="#8C6A54"/><circle cx="40" cy="14" r="3" fill="#6E4A3A"/><circle cx="60" cy="14" r="3" fill="#6E4A3A"/><circle cx="44" cy="24" r="2" fill="#2B2521"/><circle cx="56" cy="24" r="2" fill="#2B2521"/></svg>
+            <span class="status-tag status-available">Available</span>
+          </div>
+          <div class="puppy-body">
+            <div>
+              <div class="puppy-name">Marigold</div>
+              <div class="puppy-meta"><span>Hairless female</span><span>Born May 12</span></div>
+            </div>
+            <p class="puppy-desc">Cream-and-slate skin pattern, confident and food-motivated. Ready for her new home Aug&nbsp;7.</p>
+            <div class="puppy-foot">
+              <span class="price">$2,800</span>
+              <a href="#apply" class="link-arrow">Apply for Marigold →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="puppy-card">
+          <div class="puppy-photo">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="46" rx="30" ry="20" fill="#D8C3AE"/><circle cx="50" cy="26" r="16" fill="#D8C3AE"/><circle cx="40" cy="14" r="3" fill="#B08D4F"/><circle cx="60" cy="14" r="3" fill="#B08D4F"/><circle cx="44" cy="24" r="2" fill="#2B2521"/><circle cx="56" cy="24" r="2" fill="#2B2521"/></svg>
+            <span class="status-tag status-reserved">Deposit Held</span>
+          </div>
+          <div class="puppy-body">
+            <div>
+              <div class="puppy-name">Bramble</div>
+              <div class="puppy-meta"><span>Powderpuff male</span><span>Born May 12</span></div>
+            </div>
+            <p class="puppy-desc">Full soft coat, mellow and easygoing littermate to Marigold. One spot remains on the waitlist if this match falls through.</p>
+            <div class="puppy-foot">
+              <span class="price">$2,600</span>
+              <a href="#apply" class="link-arrow">Join waitlist →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="puppy-card">
+          <div class="puppy-photo">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="46" rx="30" ry="20" fill="#2B2521"/><circle cx="50" cy="26" r="16" fill="#2B2521"/><circle cx="40" cy="14" r="3" fill="#C08770"/><circle cx="60" cy="14" r="3" fill="#C08770"/><circle cx="44" cy="24" r="2" fill="#F7F2EC"/><circle cx="56" cy="24" r="2" fill="#F7F2EC"/></svg>
+            <span class="status-tag status-available">Litter due Aug</span>
+          </div>
+          <div class="puppy-body">
+            <div>
+              <div class="puppy-name">Upcoming litter — Sable × Juniper</div>
+              <div class="puppy-meta"><span>Mixed coats expected</span><span>Due Aug 20</span></div>
+            </div>
+            <p class="puppy-desc">Second litter of the year. Applications open now; priority given to approved families already on file.</p>
+            <div class="puppy-foot">
+              <span class="price">From $2,600</span>
+              <a href="#apply" class="link-arrow">Apply early →</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">How It Works</span>
+        <h2>From application to pickup</h2>
+      </div>
+      <div class="process">
+        <div class="step">
+          <div class="step-dot">1</div>
+          <h3>Apply online</h3>
+          <p>Tell us about your home and experience. Takes about five minutes.</p>
+        </div>
+        <div class="step">
+          <div class="step-dot">2</div>
+          <h3>Meet & match</h3>
+          <p>We schedule a call or video visit to talk through the right puppy for your family.</p>
+        </div>
+        <div class="step">
+          <div class="step-dot">3</div>
+          <h3>Deposit & prep</h3>
+          <p>A deposit holds your puppy. We send a prep guide covering feeding, skin care, and setup.</p>
+        </div>
+        <div class="step">
+          <div class="step-dot">4</div>
+          <h3>Go home</h3>
+          <p>Pickup or ground transport at 8 weeks, with records, guarantee, and ongoing support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="testimonial-wrap">
+        <div class="testimonial-track" id="tTrack">
+          <div class="t-slide">
+            <p class="t-quote">"They answered every question before we even sent a deposit. Our puppy's paperwork was more thorough than our own vet's."</p>
+            <p class="t-author">— Dana R., Rochester, NY</p>
+          </div>
+          <div class="t-slide">
+            <p class="t-quote">"We'd never owned a hairless breed. The prep guide covered sunscreen, coat care, everything — nothing was a surprise."</p>
+            <p class="t-author">— Marcus T., Brooklyn, NY</p>
+          </div>
+          <div class="t-slide">
+            <p class="t-quote">"Two years later our vet still comments on how well socialized she was at pickup. You can tell she was raised in a home."</p>
+            <p class="t-author">— Priya S., Albany, NY</p>
+          </div>
+        </div>
+        <div class="t-controls" id="tControls"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="apply" style="background:var(--card); border-top:1px solid var(--line);">
+    <div class="wrap apply-shell">
+      <div class="apply-info">
+        <span class="eyebrow">Application</span>
+        <h2>Tell us about your home</h2>
+        <p>We place a small number of puppies each year and read every application personally. A deposit is only requested after we've spoken with you.</p>
+        <ul>
+          <li>No fee to apply — the form takes about five minutes</li>
+          <li>We reply within 2 business days</li>
+          <li>Approved families get first access to upcoming litters</li>
+        </ul>
+      </div>
+
+      <form id="applyForm" novalidate>
+        <div class="success-msg" id="successMsg">Thank you — your application was received. We'll be in touch within two business days.</div>
+
+        <div class="field-row">
+          <div class="field" id="f-name">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" placeholder="Jane Alvarez">
+            <span class="err">Please enter your name.</span>
+          </div>
+          <div class="field" id="f-email">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="jane@email.com">
+            <span class="err">Enter a valid email address.</span>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field" id="f-phone">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+            <span class="err">Enter a valid phone number.</span>
+          </div>
+          <div class="field" id="f-city">
+            <label for="city">City, State</label>
+            <input type="text" id="city" name="city" placeholder="Buffalo, NY">
+            <span class="err">Please enter your city and state.</span>
+          </div>
+        </div>
+
+        <div class="field" id="f-puppy">
+          <label for="puppy">Interested in</label>
+          <select id="puppy" name="puppy">
+            <option value="">Select a puppy or litter</option>
+            <option>Marigold — Hairless female</option>
+            <option>Bramble — Powderpuff male (waitlist)</option>
+            <option>Upcoming litter — Sable × Juniper</option>
+            <option>Not sure yet</option>
+          </select>
+          <span class="err">Please make a selection.</span>
+        </div>
+
+        <div class="field" id="f-message">
+          <label for="message">Tell us about your home</label>
+          <textarea id="message" name="message" rows="4" placeholder="Household, other pets, activity level, why a Chinese Crested…"></textarea>
+          <span class="err">A short description helps us match you well.</span>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Application</button>
+        <p class="form-note">By submitting, you agree to be contacted about your application. We never sell or share your information.</p>
+      </form>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap" style="max-width:820px;">
+      <div class="section-head">
+        <span class="eyebrow">Questions</span>
+        <h2>Frequently asked</h2>
+      </div>
+      <div id="faqList">
+        <div class="faq-item">
+          <button class="faq-q"><span>Is a Chinese Crested's skin sensitive?</span><span class="plus">+</span></button>
+          <div class="faq-a"><p>The hairless variety needs sunscreen outdoors and a light jacket in cold weather, but otherwise their skin is no more delicate than a short-haired dog's. We cover full skin care in the prep guide every family receives.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>Do you ship puppies?</span><span class="plus">+</span></button>
+          <div class="faq-a"><p>We prefer in-person pickup in New York, but can arrange ground transport with a bonded pet courier for families within driving distance. We do not use cargo air travel.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>What's included in the health guarantee?</span><span class="plus">+</span></button>
+          <div class="faq-a"><p>Every puppy leaves with a veterinary exam, age-appropriate vaccinations, and a written genetic health guarantee. Full terms are provided during the application process.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span>Can I visit before applying?</span><span class="plus">+</span></button>
+          <div class="faq-a"><p>Yes — once an application is reviewed, we schedule an in-home or video visit so you can meet the parents and see how the litter is raised.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Crested Spot</h4>
+        <p>A small, home-based Chinese Crested breeding program based in New York State. Raising hairless and powderpuff puppies since 2019.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#breed">The Breed</a></li>
+          <li><a href="#puppies">Available Puppies</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@crestedspot.example">hello@crestedspot.example</a></li>
+          <li><a href="tel:+15550000000">(555) 000-0000</a></li>
+          <li>New York State, USA</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Crested Spot. All rights reserved.</span>
+      <span>Replace placeholder contact details and photos before publishing.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var menuBtn = document.getElementById('menuBtn');
+  var navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', function(){
+    var isOpen = navLinks.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ navLinks.classList.remove('open'); });
+  });
+
+  var canvas = document.getElementById('spotCanvas');
+  var ctx = canvas.getContext('2d');
+  var palette = ['#6E4A3A', '#C08770', '#B08D4F', '#2B2521', '#8C6A54'];
+
+  function resizeCanvas(){
+    var rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+  }
+
+  function drawSpots(){
+    resizeCanvas();
+    var w = canvas.width, h = canvas.height;
+    ctx.clearRect(0,0,w,h);
+
+    var grad = ctx.createLinearGradient(0,0,w,h);
+    grad.addColorStop(0,'#E9DDCF');
+    grad.addColorStop(1,'#D3BBA2');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0,0,w,h);
+
+    var count = 22 + Math.floor(Math.random()*10);
+    for(var i=0;i<count;i++){
+      var x = Math.random()*w;
+      var y = Math.random()*h;
+      var r = 10 + Math.random()*Math.min(w,h)*0.09;
+      ctx.beginPath();
+      ctx.arc(x,y,r,0,Math.PI*2);
+      ctx.fillStyle = palette[Math.floor(Math.random()*palette.length)];
+      ctx.globalAlpha = 0.55 + Math.random()*0.35;
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  drawSpots();
+  window.addEventListener('resize', drawSpots);
+  canvas.parentElement.addEventListener('click', drawSpots);
+  canvas.style.cursor = 'pointer';
+
+  var track = document.getElementById('tTrack');
+  var slides = track.querySelectorAll('.t-slide');
+  var controls = document.getElementById('tControls');
+  var current = 0;
+
+  slides.forEach(function(_, i){
+    var dot = document.createElement('button');
+    dot.className = 't-dot' + (i===0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Show testimonial ' + (i+1));
+    dot.addEventListener('click', function(){ goTo(i); });
+    controls.appendChild(dot);
+  });
+
+  function goTo(i){
+    current = i;
+    track.style.transform = '';
+    slides.forEach(function(s, idx){ s.style.display = idx===i ? 'block' : 'none'; });
+    controls.querySelectorAll('.t-dot').forEach(function(d, idx){
+      d.classList.toggle('active', idx===i);
+    });
+  }
+  goTo(0);
+
+  var autoplay = setInterval(function(){
+    goTo((current + 1) % slides.length);
+  }, 6000);
+  track.closest('.testimonial-wrap').addEventListener('mouseenter', function(){ clearInterval(autoplay); });
+
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    var a = item.querySelector('.faq-a');
+    q.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem){
+        if(openItem !== item){
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-a').style.maxHeight = null;
+        }
+      });
+      if(isOpen){
+        item.classList.remove('open');
+        a.style.maxHeight = null;
+      } else {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  var form = document.getElementById('applyForm');
+  var successMsg = document.getElementById('successMsg');
+
+  var validators = {
+    name: function(v){ return v.trim().length > 1; },
+    email: function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); },
+    phone: function(v){ return v.trim().replace(/[^0-9]/g,'').length >= 10; },
+    city: function(v){ return v.trim().length > 1; },
+    puppy: function(v){ return v !== ''; },
+    message: function(v){ return v.trim().length >= 10; }
+  };
+
+  function validateField(name){
+    var input = form.elements[name];
+    var fieldEl = document.getElementById('f-' + name);
+    var valid = validators[name](input.value);
+    fieldEl.classList.toggle('invalid', !valid);
+    return valid;
+  }
+
+  Object.keys(validators).forEach(function(name){
+    form.elements[name].addEventListener('blur', function(){ validateField(name); });
+    form.elements[name].addEventListener('input', function(){
+      if(document.getElementById('f-' + name).classList.contains('invalid')) validateField(name);
+    });
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var allValid = true;
+    Object.keys(validators).forEach(function(name){
+      if(!validateField(name)) allValid = false;
+    });
+    if(!allValid){
+      var firstInvalid = form.querySelector('.invalid input, .invalid select, .invalid textarea');
+      if(firstInvalid) firstInvalid.focus();
+      return;
+    }
+    successMsg.style.display = 'block';
+    form.reset();
+    successMsg.scrollIntoView({behavior:'smooth', block:'center'});
+    setTimeout(function(){ successMsg.style.display = 'none'; }, 6000);
+  });
+
+})();
+</script>
+</body>
+</html>
